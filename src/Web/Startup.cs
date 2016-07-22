@@ -34,6 +34,7 @@ namespace Web
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }

@@ -33,6 +33,7 @@ namespace Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseFileServer();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

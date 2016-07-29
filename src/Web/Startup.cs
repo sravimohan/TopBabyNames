@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Web.Repository;
 
 namespace Web
 {
@@ -25,6 +26,9 @@ namespace Web
         {
             // Add framework services.
             services.AddMvc();
+
+            // Application services.
+            services.AddTransient<INameRankRepository, NameRankRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,8 +41,8 @@ namespace Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Default}/{action=Default}/{id?}");
+                    name: "home",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

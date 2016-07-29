@@ -3,10 +3,10 @@
 namespace Web.Controllers
 {
     [Route("[controller]")]
-    public class DefaultController : Controller
+    public class HomeController : Controller
     {
         [HttpGet]
-        public IActionResult Default()
+        public IActionResult Index()
         {
             return View();
         }

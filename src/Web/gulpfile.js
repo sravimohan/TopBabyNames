@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='ts' AfterBuild='ts' />
+/// <binding />
 var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
@@ -31,7 +31,6 @@ gulp.task("systemjs", function () {
 
 var tsProject = ts.createProject('scripts/tsconfig.json');
 gulp.task('ts', function (done) {
-    //var tsResult = tsProject.src()
     var tsResult = gulp.src([
             "scripts/*.ts"
     ])
@@ -45,6 +44,10 @@ gulp.task('watch.ts', ['ts'], function () {
     return gulp.watch('scripts/*.ts', ['ts']);
 });
 
-gulp.task('default', ['systemjs', 'scriptsNStyles', 'watch']);
+gulp.task("tstemplate", function () {
+    gulp.src(["templates/*.html"]).pipe(gulp.dest("./wwwroot/templates/"));
+});
+
+gulp.task('default', ['systemjs', 'scriptsNStyles', 'tstemplate', 'watch']);
 
 gulp.task('dev-rel', ['systemjs', 'scriptsNStyles']);

@@ -3,7 +3,7 @@
 namespace Web.Controllers
 {
     [Route("[controller]")]
-    public class HomeController : Controller
+    public class DefaultController : Controller
     {
         [HttpGet]
         public IActionResult Index()

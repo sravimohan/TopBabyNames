@@ -1,18 +1,21 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
 
-import { Component } from "@angular/core";
+import { Component, AfterViewChecked } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
+import { IAppTheme } from "./AppTheme";
 import { INameRank } from "./NameRank";
 import { NameRankService } from "./NameRankService";
+
+declare var App: IAppTheme;
 
 @Component({
     selector: "top-baby-names-app",
     templateUrl: "/templates/app.html",
-    providers: [NameRankService,
-        HTTP_PROVIDERS]
+    providers: [NameRankService, HTTP_PROVIDERS]
 })
-export class AppComponent {
+
+export class AppComponent implements AfterViewChecked {
 
     title = "Top Baby Names";
     nameRanks: INameRank[];
@@ -29,5 +32,10 @@ export class AppComponent {
             .subscribe(
             (nameRanks: any) => this.nameRanks = nameRanks,
             error => this.errorMessage = <any>error);
+    }
+
+    ngAfterViewChecked(): void {
+        //App.init();
+        //App.dataTables();
     }
 }

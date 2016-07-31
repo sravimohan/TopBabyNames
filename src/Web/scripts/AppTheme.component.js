@@ -24,9 +24,9 @@ var AppComponent = (function () {
         this.namerankService.getNameRanks(this.year, this.sex)
             .subscribe(function (nameRanks) { return _this.nameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
     };
-    AppComponent.prototype.ngAfterViewChecked = function () {
-        //App.init();
-        //App.dataTables();
+    AppComponent.prototype.ngAfterViewInit = function () {
+        App.init();
+        App.dataTables();
     };
     AppComponent = __decorate([
         core_1.Component({

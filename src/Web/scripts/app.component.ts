@@ -18,11 +18,14 @@ export class AppComponent {
     nameRanks: INameRank[];
     errorMessage: string;
 
+    year = 2014;
+    sex = "G";
+
     constructor(private namerankService: NameRankService) {
     }
 
     ngOnInit(): void {
-        this.namerankService.getNameRanks()
+        this.namerankService.getNameRanks(this.year, this.sex)
             .subscribe(
             (nameRanks: any) => this.nameRanks = nameRanks,
             error => this.errorMessage = <any>error);

@@ -17,10 +17,9 @@ require('rxjs/Rx');
 var NameRankService = (function () {
     function NameRankService(http) {
         this.http = http;
-        this.apiUrl = 'api/GetByYear?year=1975&sex=g';
     }
-    NameRankService.prototype.getNameRanks = function () {
-        return this.http.get(this.apiUrl)
+    NameRankService.prototype.getNameRanks = function (year, sex) {
+        return this.http.get("api/GetByYear?year=" + year + "&sex=" + sex)
             .map(function (response) { return response.json(); });
     };
     NameRankService.prototype.handleError = function (error) {

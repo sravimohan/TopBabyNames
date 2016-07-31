@@ -10,12 +10,11 @@ import { INameRank } from './nameRank';
 
 @Injectable()
 export class NameRankService {
-    private apiUrl = 'api/GetByYear?year=1975&sex=g';
 
     constructor(private http: Http) { }
 
-    getNameRanks(): Observable<INameRank[]> {
-        return this.http.get(this.apiUrl)
+    getNameRanks(year : number, sex : string): Observable<INameRank[]> {
+        return this.http.get("api/GetByYear?year=" + year + "&sex=" + sex)
             .map((response: Response) => <INameRank[]>response.json());
     }
 

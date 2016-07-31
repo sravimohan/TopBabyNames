@@ -16,10 +16,12 @@ var AppComponent = (function () {
     function AppComponent(namerankService) {
         this.namerankService = namerankService;
         this.title = "Top Baby Names";
+        this.year = 2014;
+        this.sex = "G";
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.namerankService.getNameRanks()
+        this.namerankService.getNameRanks(this.year, this.sex)
             .subscribe(function (nameRanks) { return _this.nameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
     };
     AppComponent = __decorate([

@@ -1,4 +1,4 @@
-/// <binding AfterBuild='tstemplate, ts' />
+/// <binding AfterBuild='ts, default' />
 var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
@@ -8,7 +8,7 @@ var destPath = './wwwroot/';
 // Delete the dist directory
 gulp.task('clean', function () {
     return gulp.src(destPath)
-        .pipe(clean());
+        .pipe(clean(), { read: false });
 });
 
 gulp.task("scriptsNStyles", function () {
@@ -52,6 +52,12 @@ gulp.task("tstheme-assets", function () {
     gulp.src(["assets/**/*"]).pipe(gulp.dest("wwwroot/assets"));
 });
 
-gulp.task('default', ['systemjs', 'scriptsNStyles', 'tstemplate', 'watch']);
+gulp.task("npm-lib", function () {
+    gulp.src(["node_modules/**/*"]).pipe(gulp.dest("wwwroot/libs"));
+    gulp.src(["node_modules/rxjs/operator/**/*"]).pipe(gulp.dest("wwwroot/libs/rxjs/operators"));
+});
+
+gulp.task('default', ['ts', 'tstemplate']);
+gulp.task('devTasks', ['systemjs', 'npm-lib', 'tstheme-assets', 'default']);
 
 gulp.task('dev-rel', ['systemjs', 'scriptsNStyles']);

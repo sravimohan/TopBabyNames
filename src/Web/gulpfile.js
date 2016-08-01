@@ -48,6 +48,10 @@ gulp.task("tstemplate", function () {
     gulp.src(["templates/*.html"]).pipe(gulp.dest("./wwwroot/templates/"));
 });
 
+gulp.task("tstheme-assets", function () {
+    gulp.src(["assets/**/*"]).pipe(gulp.dest("wwwroot/assets"));
+});
+
 gulp.task('default', ['systemjs', 'scriptsNStyles', 'tstemplate', 'watch']);
 
 gulp.task('dev-rel', ['systemjs', 'scriptsNStyles']);

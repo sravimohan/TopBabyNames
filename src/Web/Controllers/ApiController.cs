@@ -19,6 +19,12 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetStatsByName(string name)
+        {
+            return new ObjectResult(_repository.GetStatsByName(name));
+        }
+
+        [HttpGet]
         public IActionResult GetByYear(int year, string sex)
         {
             return new ObjectResult(_repository.GetByYear(year, sex.ToEnum()));

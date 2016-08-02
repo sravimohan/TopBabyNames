@@ -1,0 +1,38 @@
+﻿<div class="row">
+    <div class="col-sm-6">
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody class="no-border-x">
+            <tr *ngFor="let nameRank of boyNameRanks">
+                <td>{{ nameRank.rank }}</td>
+                <td>{{ nameRank.name }}</td>
+                <td>{{ nameRank.total }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody class="no-border-x">
+                <tr *ngFor="let nameRank of girlNameRanks">
+                    <td>{{ nameRank.rank }}</td>
+                    <td>{{ nameRank.name }}</td>
+                    <td>{{ nameRank.total }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

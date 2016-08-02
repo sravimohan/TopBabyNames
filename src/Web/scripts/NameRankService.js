@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/operators/map");
-require('rxjs/Rx');
+require("rxjs/Rx");
 var NameRankService = (function () {
     function NameRankService(http) {
         this.http = http;

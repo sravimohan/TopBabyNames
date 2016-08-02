@@ -1,4 +1,4 @@
-/// <binding AfterBuild='ts, default' />
+/// <binding AfterBuild='default' />
 var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');

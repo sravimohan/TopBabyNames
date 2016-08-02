@@ -441,19 +441,6 @@
                 </ol>
             </div>
             <div class="main-content">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="widget widget-fullwidth line-chart">
-                                <div class="widget-head">
-                                    <span class="title">Baby Name</span>
-                                </div>
-                                <div class="chart-container">
-                                    <div id="chartplaceholder2" style="height: 250px;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 <top-baby-names-app>Loading...</top-baby-names-app>
             </div>
         </div>
@@ -684,72 +671,6 @@
 
 <script src="assets/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
 <script src="assets/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-
-    $(function() {
-        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
-        //$.plot("#chartplaceholder2", [d2]);
-        var color1 = App.color.alt2;
-        $.plot("#chartplaceholder2",
-        [{
-            data: d2,
-            showLabels: true,
-            label: "New Visitors",
-            labelPlacement: "below",
-            canvasRender: true,
-            cColor: "#FFFFFF"
-        }
-        ], {
-            series: {
-                lines: {
-                    show: true,
-                    lineWidth: 2,
-                    fill: true,
-                    fillColor: { colors: [{ opacity: 0.6 }, { opacity: 0.6 }] }
-                },
-                fillColor: "rgba(0, 0, 0, 1)",
-                points: {
-                    show: true,
-                    fill: true,
-                    fillColor: color1
-                },
-                shadowSize: 0
-            },
-            legend: {
-                show: false
-            },
-            grid: {
-                show: false,
-                margin: {
-                    left: -8,
-                    right: -8,
-                    top: 0,
-                    botttom: 0
-                },
-                labelMargin: 0,
-                axisMargin: 0,
-                hoverable: true,
-                clickable: true,
-                tickColor: "rgba(0, 0, 0, 0)",
-                borderWidth: 0
-            },
-            //colors: [color1],
-            xaxis: {
-                autoscaleMargin: 0,
-                ticks: 11,
-                tickDecimals: 0
-            },
-            yaxis: {
-                autoscaleMargin: 0.5,
-                ticks: 5,
-                tickDecimals: 0
-            }
-        });
-
-    });
-
-</script>
 
        <script type="text/javascript">
             $(document)

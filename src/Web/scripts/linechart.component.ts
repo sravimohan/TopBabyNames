@@ -6,18 +6,16 @@ import { HTTP_PROVIDERS } from "@angular/http";
 import { IAppTheme } from "./AppTheme";
 import { INameRank } from "./NameRank";
 import { NameRankService } from "./NameRankService";
-import { LineChart } from "./linechart.component";
 
 declare var App: IAppTheme;
 
 @Component({
-    selector: "top-baby-names-app",
-    templateUrl: "/templates/app.html",
-    providers: [NameRankService, HTTP_PROVIDERS],
-    directives: [LineChart]
+    selector: "linechart",
+    templateUrl: "/templates/linechart.html",
+    providers: [NameRankService, HTTP_PROVIDERS]
 })
 
-export class AppComponent implements AfterViewChecked {
+export class LineChart implements AfterViewChecked {
 
     title = "Top Baby Names";
     nameRanks: INameRank[];
@@ -37,7 +35,6 @@ export class AppComponent implements AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
-        //App.init();
-        //App.dataTables();
+        App.chartsetup();
     }
 }

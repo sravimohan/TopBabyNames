@@ -12,33 +12,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
-var linechart_component_1 = require("./linechart.component");
-var AppComponent = (function () {
-    function AppComponent(namerankService) {
+var LineChart = (function () {
+    function LineChart(namerankService) {
         this.namerankService = namerankService;
         this.title = "Top Baby Names";
         this.year = 2014;
         this.sex = "G";
     }
-    AppComponent.prototype.ngOnInit = function () {
+    LineChart.prototype.ngOnInit = function () {
         var _this = this;
         this.namerankService.getNameRanks(this.year, this.sex)
             .subscribe(function (nameRanks) { return _this.nameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
     };
-    AppComponent.prototype.ngAfterViewChecked = function () {
-        //App.init();
-        //App.dataTables();
+    LineChart.prototype.ngAfterViewChecked = function () {
+        App.chartsetup();
     };
-    AppComponent = __decorate([
+    LineChart = __decorate([
         core_1.Component({
-            selector: "top-baby-names-app",
-            templateUrl: "/templates/app.html",
-            providers: [NameRankService_1.NameRankService, http_1.HTTP_PROVIDERS],
-            directives: [linechart_component_1.LineChart]
+            selector: "linechart",
+            templateUrl: "/templates/linechart.html",
+            providers: [NameRankService_1.NameRankService, http_1.HTTP_PROVIDERS]
         }), 
         __metadata('design:paramtypes', [NameRankService_1.NameRankService])
-    ], AppComponent);
-    return AppComponent;
+    ], LineChart);
+    return LineChart;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.LineChart = LineChart;
+//# sourceMappingURL=linechart.component.js.map

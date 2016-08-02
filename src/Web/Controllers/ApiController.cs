@@ -24,14 +24,13 @@ namespace Web.Controllers
         [HttpGet]
         public IActionResult GetStatsByName(string name)
         {
-            var stats = _repository.GetStatsByName(name).Take(20).ToList();
+            var nameStatistics = _repository.GetStatsByName(name).ToList();
+            var statsArray = new int[nameStatistics.Count(), 2];
 
-            var statsArray = new int[stats.Count(), 2];
-
-            for (int x = 0; x < stats.Count(); x++)
+            for (var x = 0; x < nameStatistics.Count(); x++)
             {
-                statsArray[x, 0] = stats[x].Year;
-                statsArray[x, 1] = stats[x].Total;
+                statsArray[x, 0] = nameStatistics[x].Year;
+                statsArray[x, 1] = nameStatistics[x].Total;
             }
 
             return new ObjectResult(statsArray);

@@ -7,7 +7,7 @@ namespace Web.Repository
 {
     public class NameRankRepository : INameRankRepository
     {
-        private static IEnumerable<NameRank> NameRanks { get; } = new NameRankContext().NameRanks;
+        private static IEnumerable<NameRank> NameRanks { get; } = new NameRankContext().NameRanks.ToList();
 
         public IEnumerable<NameRank> GetByName(string name)
         {

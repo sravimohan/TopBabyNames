@@ -15,17 +15,19 @@ var NameStatisticsService_1 = require("./NameStatisticsService");
 var LineChart = (function () {
     function LineChart(namerankService) {
         this.namerankService = namerankService;
-        this.title = "Top Baby Names";
-        this.name = "Jessica";
     }
     LineChart.prototype.ngOnInit = function () {
         var _this = this;
-        this.namerankService.getNameStatistics(this.name)
-            .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; }, App.chartsetup(this.name, "#chartplaceholder2", this.nameStatistics));
+        this.namerankService.getNameStatistics(this.babyName)
+            .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; });
     };
     LineChart.prototype.ngAfterViewChecked = function () {
-        App.chartsetup(this.name, "#chartplaceholder2", this.nameStatistics);
+        App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], LineChart.prototype, "babyName", void 0);
     LineChart = __decorate([
         core_1.Component({
             selector: "linechart",

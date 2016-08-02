@@ -1,5 +1,5 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
-import { Component, AfterViewChecked } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
 import { IAppTheme } from "./AppTheme";
@@ -14,11 +14,10 @@ import { NameRankService } from "./NameRankService";
 
 export class DataTable {
 
+    @Input() year : number;
     boyNameRanks: INameRank[];
     girlNameRanks: INameRank[];
     errorMessage: string;
-
-    year = 2014;
 
     constructor(private namerankService: NameRankService) {
     }

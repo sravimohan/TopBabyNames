@@ -15,7 +15,6 @@ var NameRankService_1 = require("./NameRankService");
 var DataTable = (function () {
     function DataTable(namerankService) {
         this.namerankService = namerankService;
-        this.year = 2014;
     }
     DataTable.prototype.ngOnInit = function () {
         var _this = this;
@@ -24,6 +23,10 @@ var DataTable = (function () {
         this.namerankService.getNameRanks(this.year, "G")
             .subscribe(function (nameRanks) { return _this.girlNameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], DataTable.prototype, "year", void 0);
     DataTable = __decorate([
         core_1.Component({
             selector: "datatable",

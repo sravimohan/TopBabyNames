@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using Web.Repository;
 
 namespace Web.Controllers
@@ -21,7 +24,17 @@ namespace Web.Controllers
         [HttpGet]
         public IActionResult GetStatsByName(string name)
         {
-            return new ObjectResult(_repository.GetStatsByName(name));
+            var stats = _repository.GetStatsByName(name).Take(20).ToList();
+
+            var statsArray = new int[stats.Count(), 2];
+
+            for (int x = 0; x < stats.Count(); x++)
+            {
+                statsArray[x, 0] = stats[x].Year;
+                statsArray[x, 1] = stats[x].Total;
+            }
+
+            return new ObjectResult(statsArray);
         }
 
         [HttpGet]

@@ -28,6 +28,7 @@ namespace Web
             services.AddMvc();
 
             // Application services.
+            services.AddTransient<NameRankContext, NameRankContext>();
             services.AddTransient<INameRankRepository, NameRankRepository>();
         }
 

@@ -7,7 +7,24 @@ namespace Web.Repository
 {
     public class NameRankRepository : INameRankRepository
     {
-        private static IEnumerable<NameRank> NameRanks { get; } = new NameRankContext().NameRanks.ToList();
+        private readonly NameRankContext _dbcontext;
+
+        public NameRankRepository(NameRankContext dbcontext)
+        {
+            _dbcontext = dbcontext;
+        }
+
+        private static IEnumerable<NameRank> _nameRanks;
+        private IEnumerable<NameRank> NameRanks
+        {
+            get
+            {
+                if (_nameRanks == null)
+                    _nameRanks = _dbcontext.NameRanks.ToList();
+
+                return _nameRanks;
+            }
+        }
 
         public IEnumerable<NameRank> GetByName(string name)
         {

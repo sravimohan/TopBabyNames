@@ -26,6 +26,11 @@ namespace Web.Repository
             }
         }
 
+        public IEnumerable<string> GetAllNames()
+        {
+            return NameRanks.Select(n => n.Name).Distinct().OrderBy(s => s);
+        }
+
         public IEnumerable<NameRank> GetByName(string name)
         {
             return NameRanks.Where(n => n.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) != -1);

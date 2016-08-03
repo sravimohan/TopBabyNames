@@ -18,6 +18,10 @@ var NameRankService = (function () {
     function NameRankService(http) {
         this.http = http;
     }
+    NameRankService.prototype.getAllNames = function () {
+        return this.http.get("api/GetAllNames")
+            .map(function (response) { return response.json(); });
+    };
     NameRankService.prototype.getNameRanks = function (year, sex) {
         return this.http.get("api/GetByYear?year=" + year + "&sex=" + sex)
             .map(function (response) { return response.json(); });

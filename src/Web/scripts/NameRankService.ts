@@ -13,6 +13,11 @@ export class NameRankService {
 
     constructor(private http: Http) { }
 
+    getAllNames(): Observable<string[]> {
+        return this.http.get("api/GetAllNames")
+            .map((response: Response) => <string[]>response.json());
+    }
+
     getNameRanks(year : number, sex : string): Observable<INameRank[]> {
         return this.http.get("api/GetByYear?year=" + year + "&sex=" + sex)
             .map((response: Response) => <INameRank[]>response.json());

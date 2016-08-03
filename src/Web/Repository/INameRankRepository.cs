@@ -5,6 +5,7 @@ namespace Web.Repository
 {
     public interface INameRankRepository
     {
+        IEnumerable<string> GetAllNames();
         IEnumerable<NameRank> GetByName(string name);
         IEnumerable<NameRank> GetByYear(int year, Sex sex);
         IEnumerable<NameStatistics> GetStatsByName(string name);

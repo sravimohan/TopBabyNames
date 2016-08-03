@@ -16,6 +16,12 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetAllNames()
+        {
+            return new ObjectResult(_repository.GetAllNames());
+        }
+
+        [HttpGet]
         public IActionResult GetByName(string name)
         {
             return new ObjectResult(_repository.GetByName(name));

@@ -18,6 +18,10 @@ var NameStatisticsService = (function () {
     function NameStatisticsService(http) {
         this.http = http;
     }
+    NameStatisticsService.prototype.getAllNames = function () {
+        return this.http.get("api/GetAllNames")
+            .map(function (response) { return response.json(); });
+    };
     NameStatisticsService.prototype.getNameStatistics = function (name) {
         return this.http.get("api/GetStatsByName?name=" + name)
             .map(function (response) { return response.json(); });

@@ -13,6 +13,11 @@ export class NameStatisticsService {
 
     constructor(private http: Http) { }
 
+    getAllNames(): Observable<string[]> {
+        return this.http.get("api/GetAllNames")
+            .map((response: Response) => <string[]>response.json());
+    }
+
     getNameStatistics(name: string): Observable<INameStatistics[]> {
         return this.http.get("api/GetStatsByName?name=" + name)
             .map((response: Response) => <INameStatistics[]>response.json());

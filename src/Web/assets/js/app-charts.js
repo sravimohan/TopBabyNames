@@ -34,5 +34,12 @@ var App = (function () {
         $.plot($(placeholder), dataset, options);
     }
 
+    App.formatBabyNameList = function () {
+        $("#babyNameList").select2({
+            width: '100%',
+            placeholder: "Enter Baby Name..."
+        });
+    };
+
     return App;
 })(App || {});

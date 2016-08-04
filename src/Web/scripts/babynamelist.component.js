@@ -12,34 +12,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameStatisticsService_1 = require("./NameStatisticsService");
-var LineChart = (function () {
-    function LineChart(namerankService) {
+var BabyNameList = (function () {
+    function BabyNameList(namerankService) {
         this.namerankService = namerankService;
     }
-    LineChart.prototype.ngOnInit = function () {
+    BabyNameList.prototype.ngOnInit = function () {
         var _this = this;
-        this.namerankService.getNameStatistics(this.babyName)
-            .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; });
+        this.namerankService.getAllNames()
+            .subscribe(function (allNames) { return _this.allNames = allNames; }, function (error) { return _this.errorMessage = error; });
     };
-    LineChart.prototype.ngAfterViewChecked = function () {
+    BabyNameList.prototype.ngAfterViewChecked = function () {
         if (this.isAfterViewChecked)
             return;
-        App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);
+        App.formatBabyNameList();
         this.isAfterViewChecked = true;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], LineChart.prototype, "babyName", void 0);
-    LineChart = __decorate([
+    BabyNameList = __decorate([
         core_1.Component({
-            selector: "linechart",
-            templateUrl: "/templates/linechart.html",
+            selector: "babynamelist",
+            templateUrl: "/templates/babynamelist.html",
             providers: [NameStatisticsService_1.NameStatisticsService, http_1.HTTP_PROVIDERS]
         }), 
         __metadata('design:paramtypes', [NameStatisticsService_1.NameStatisticsService])
-    ], LineChart);
-    return LineChart;
+    ], BabyNameList);
+    return BabyNameList;
 }());
-exports.LineChart = LineChart;
-//# sourceMappingURL=linechart.component.js.map
+exports.BabyNameList = BabyNameList;
+//# sourceMappingURL=babynamelist.component.js.map

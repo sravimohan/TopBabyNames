@@ -1,23 +1,21 @@
-/// <reference path="../typings/globals/core-js/index.d.ts" />
+﻿/// <reference path="../typings/globals/core-js/index.d.ts" />
 
 import { Component, Input, AfterViewChecked } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
 import { IAppTheme } from "./AppTheme";
-import { INameStatistics } from "./NameStatistics";
 import { NameStatisticsService } from "./NameStatisticsService";
 
 declare var App: IAppTheme;
 
 @Component({
-    selector: "linechart",
-    templateUrl: "/templates/linechart.html",
+    selector: "babynamelist",
+    templateUrl: "/templates/babynamelist.html",
     providers: [NameStatisticsService, HTTP_PROVIDERS]
 })
 
-export class LineChart implements AfterViewChecked {
-    @Input() babyName : string;
-    nameStatistics: INameStatistics[];
+export class BabyNameList implements AfterViewChecked {
+    allNames: string[];
     errorMessage: string;
     isAfterViewChecked: boolean;
 
@@ -26,8 +24,8 @@ export class LineChart implements AfterViewChecked {
 
     ngOnInit(): void {
 
-        this.namerankService.getNameStatistics(this.babyName)
-            .subscribe((nameStatistics: any) => this.nameStatistics = nameStatistics, 
+        this.namerankService.getAllNames()
+            .subscribe((allNames: any) => this.allNames = allNames,
             error => this.errorMessage = <any>error);
     }
 
@@ -35,7 +33,7 @@ export class LineChart implements AfterViewChecked {
         if (this.isAfterViewChecked)
             return;
 
-        App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);
+        App.formatBabyNameList();
         this.isAfterViewChecked = true;
     }
 }

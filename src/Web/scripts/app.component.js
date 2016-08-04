@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var linechart_component_1 = require("./linechart.component");
 var datatable_component_1 = require("./datatable.component");
+var babynamelist_component_1 = require("./babynamelist.component");
 var AppComponent = (function () {
     function AppComponent() {
         this.title = "Top Baby Names";
@@ -20,7 +21,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: "top-baby-names-app",
             templateUrl: "/templates/app.html",
-            directives: [linechart_component_1.LineChart, datatable_component_1.DataTable]
+            directives: [babynamelist_component_1.BabyNameList, linechart_component_1.LineChart, datatable_component_1.DataTable]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

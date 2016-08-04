@@ -35,9 +35,14 @@ var App = (function () {
     }
 
     App.formatBabyNameList = function () {
-        $("#babyNameList").select2({
-            width: '100%',
-            placeholder: "Enter Baby Name..."
+        $("#babyNameList")
+            .select2({
+                width: '100%',
+                placeholder: "Enter Baby Name..."
+            });
+
+        $('#babyNameList').on('select2:select', function (evt) {
+            $('#babyNameSearchButton').click();
         });
     };
 

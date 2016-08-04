@@ -1,4 +1,3 @@
-/// <reference path="../typings/globals/core-js/index.d.ts" />
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/// <reference path="../typings/globals/core-js/index.d.ts" />
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
@@ -24,6 +24,14 @@ var NameRankService = (function () {
     };
     NameRankService.prototype.getNameRanks = function (year, sex) {
         return this.http.get("api/GetByYear?year=" + year + "&sex=" + sex)
+            .map(function (response) { return response.json(); });
+    };
+    NameRankService.prototype.getNameStatistics = function (name) {
+        return this.http.get("api/GetStatsByName?name=" + name)
+            .map(function (response) { return response.json(); });
+    };
+    NameRankService.prototype.getNameDetails = function (name) {
+        return this.http.get("api/GetDetailsByName?name=" + name)
             .map(function (response) { return response.json(); });
     };
     NameRankService.prototype.handleError = function (error) {

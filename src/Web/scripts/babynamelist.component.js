@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var NameStatisticsService_1 = require("./NameStatisticsService");
+var NameRankService_1 = require("./NameRankService");
 var BabyNameList = (function () {
     function BabyNameList(namerankService) {
         this.namerankService = namerankService;
@@ -42,9 +42,9 @@ var BabyNameList = (function () {
         core_1.Component({
             selector: "babynamelist",
             templateUrl: "/templates/babynamelist.html",
-            providers: [NameStatisticsService_1.NameStatisticsService, http_1.HTTP_PROVIDERS]
+            providers: [NameRankService_1.NameRankService, http_1.HTTP_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [NameStatisticsService_1.NameStatisticsService])
+        __metadata('design:paramtypes', [NameRankService_1.NameRankService])
     ], BabyNameList);
     return BabyNameList;
 }());

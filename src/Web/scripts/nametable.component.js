@@ -12,22 +12,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
-var LineChart = (function () {
-    function LineChart(namerankService) {
+var NameTable = (function () {
+    function NameTable(namerankService) {
         this.namerankService = namerankService;
     }
-    Object.defineProperty(LineChart.prototype, "nameStatistics", {
-        get: function () {
-            return this._nameStatistics;
-        },
-        set: function (nameStatistics) {
-            this._nameStatistics = nameStatistics;
-            App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(LineChart.prototype, "babyName", {
+    Object.defineProperty(NameTable.prototype, "babyName", {
         get: function () {
             return this._babyName;
         },
@@ -35,31 +24,31 @@ var LineChart = (function () {
             if (this._babyName === babyName)
                 return;
             this._babyName = babyName;
-            this.showChart();
+            this.showTable();
         },
         enumerable: true,
         configurable: true
     });
-    LineChart.prototype.showChart = function () {
+    NameTable.prototype.showTable = function () {
         var _this = this;
         if (!this.babyName)
             return;
-        this.namerankService.getNameStatistics(this.babyName)
-            .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; });
+        this.namerankService.getNameDetails(this.babyName)
+            .subscribe(function (nameRanks) { return _this.nameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], LineChart.prototype, "babyName", null);
-    LineChart = __decorate([
+    ], NameTable.prototype, "babyName", null);
+    NameTable = __decorate([
         core_1.Component({
-            selector: "linechart",
-            templateUrl: "/templates/linechart.html",
+            selector: "nametable",
+            templateUrl: "/templates/nametable.html",
             providers: [NameRankService_1.NameRankService, http_1.HTTP_PROVIDERS]
         }), 
         __metadata('design:paramtypes', [NameRankService_1.NameRankService])
-    ], LineChart);
-    return LineChart;
+    ], NameTable);
+    return NameTable;
 }());
-exports.LineChart = LineChart;
-//# sourceMappingURL=linechart.component.js.map
+exports.NameTable = NameTable;
+//# sourceMappingURL=nametable.component.js.map

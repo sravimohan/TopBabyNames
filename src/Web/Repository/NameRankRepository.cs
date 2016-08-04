@@ -33,16 +33,33 @@ namespace Web.Repository
 
         public IEnumerable<NameRank> GetByName(string name)
         {
+            if (string.IsNullOrEmpty(name))
+                return Enumerable.Empty<NameRank>();
+
             return NameRanks.Where(n => n.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) != -1);
         }
 
         public IEnumerable<NameRank> GetByYear(int year, Sex sex)
         {
+            if (year < 1951 || year > 2015)
+                return Enumerable.Empty<NameRank>();
+
             return NameRanks.Where(n => n.Year.Equals(year) && n.Sex.Equals(sex.ToDatabaseString())).OrderBy(n => n.Rank);
+        }
+
+        public IEnumerable<NameRank> GetDetailsByName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return Enumerable.Empty<NameRank>();
+
+            return NameRanks.Where(n => n.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) != -1).OrderBy(n => n.Year);
         }
 
         public IEnumerable<NameStatistics> GetStatsByName(string name)
         {
+            if (string.IsNullOrEmpty(name))
+                return Enumerable.Empty<NameStatistics>();
+
             return NameRanks.Where(n => n.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) != -1)
                 .Select(n => new NameStatistics {Year = n.Year, Total = n.Total}).OrderBy(n => n.Year);
         }

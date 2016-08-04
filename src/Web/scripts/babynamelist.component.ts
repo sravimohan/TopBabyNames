@@ -4,14 +4,14 @@ import { Component, Output, EventEmitter, AfterViewChecked } from "@angular/core
 import { HTTP_PROVIDERS } from "@angular/http";
 
 import { IAppTheme } from "./AppTheme";
-import { NameStatisticsService } from "./NameStatisticsService";
+import { NameRankService } from "./NameRankService";
 
 declare var App: IAppTheme;
 
 @Component({
     selector: "babynamelist",
     templateUrl: "/templates/babynamelist.html",
-    providers: [NameStatisticsService, HTTP_PROVIDERS]
+    providers: [NameRankService, HTTP_PROVIDERS]
 })
 
 export class BabyNameList implements AfterViewChecked {
@@ -21,7 +21,7 @@ export class BabyNameList implements AfterViewChecked {
     selectedBabyName: string;
     @Output() babyNameSelected = new EventEmitter();
 
-    constructor(private namerankService: NameStatisticsService) {
+    constructor(private namerankService: NameRankService) {
     }
 
     ngOnInit(): void {

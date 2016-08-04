@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Web.Repository;
 
@@ -25,6 +23,12 @@ namespace Web.Controllers
         public IActionResult GetByName(string name)
         {
             return new ObjectResult(_repository.GetByName(name));
+        }
+
+        [HttpGet]
+        public IActionResult GetDetailsByName(string name)
+        {
+            return new ObjectResult(_repository.GetDetailsByName(name));
         }
 
         [HttpGet]

@@ -22,6 +22,8 @@ var LineChart = (function () {
             .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; });
     };
     LineChart.prototype.ngAfterViewChecked = function () {
+        if (this.nameStatistics == null)
+            return;
         if (this.isAfterViewChecked)
             return;
         App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);

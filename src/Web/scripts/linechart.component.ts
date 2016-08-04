@@ -32,6 +32,9 @@ export class LineChart implements AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
+        if (this.nameStatistics == null)
+            return;
+
         if (this.isAfterViewChecked)
             return;
 

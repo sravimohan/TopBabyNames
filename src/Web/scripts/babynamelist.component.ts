@@ -30,6 +30,9 @@ export class BabyNameList implements AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
+        if (this.allNames == null)
+            return;
+
         if (this.isAfterViewChecked)
             return;
 

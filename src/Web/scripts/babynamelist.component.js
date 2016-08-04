@@ -22,6 +22,8 @@ var BabyNameList = (function () {
             .subscribe(function (allNames) { return _this.allNames = allNames; }, function (error) { return _this.errorMessage = error; });
     };
     BabyNameList.prototype.ngAfterViewChecked = function () {
+        if (this.allNames == null)
+            return;
         if (this.isAfterViewChecked)
             return;
         App.formatBabyNameList();

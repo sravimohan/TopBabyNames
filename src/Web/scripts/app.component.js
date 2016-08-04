@@ -15,8 +15,10 @@ var datatable_component_1 = require("./datatable.component");
 var babynamelist_component_1 = require("./babynamelist.component");
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = "Top Baby Names";
     }
+    AppComponent.prototype.onBabyNameSelected = function (babyName) {
+        this.selectedBabyName = babyName;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: "top-baby-names-app",

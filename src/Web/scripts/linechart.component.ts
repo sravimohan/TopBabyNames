@@ -16,15 +16,32 @@ declare var App: IAppTheme;
 })
 
 export class LineChart implements AfterViewChecked {
-    @Input() babyName : string;
     nameStatistics: INameStatistics[];
     errorMessage: string;
     isAfterViewChecked: boolean;
+
+    private _babyName: string;
+
+    get babyName(): string {
+        return this._babyName;
+    }
+
+    @Input() set babyName(babyName: string) {
+
+        if (this._babyName === babyName)
+            return;
+
+        this._babyName = babyName;
+        this.showChart();
+    }
 
     constructor(private namerankService: NameStatisticsService) {
     }
 
     ngOnInit(): void {
+
+        if (this.babyName == null || this.babyName === "")
+            return;
 
         this.namerankService.getNameStatistics(this.babyName)
             .subscribe((nameStatistics: any) => this.nameStatistics = nameStatistics, 
@@ -32,7 +49,10 @@ export class LineChart implements AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
-        if (this.nameStatistics == null)
+        if (!this.babyName)
+            return;
+
+        if (!this.nameStatistics)
             return;
 
         if (this.isAfterViewChecked)
@@ -40,5 +60,12 @@ export class LineChart implements AfterViewChecked {
 
         App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);
         this.isAfterViewChecked = true;
+    }
+
+    showChart(): void {
+        this.namerankService.getNameStatistics(this.babyName)
+            .subscribe((nameStatistics: any) => this.nameStatistics = nameStatistics,
+            error => this.errorMessage = <any>error,
+            App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics));
     }
 }

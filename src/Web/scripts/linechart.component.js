@@ -16,23 +16,45 @@ var LineChart = (function () {
     function LineChart(namerankService) {
         this.namerankService = namerankService;
     }
+    Object.defineProperty(LineChart.prototype, "babyName", {
+        get: function () {
+            return this._babyName;
+        },
+        set: function (babyName) {
+            if (this._babyName === babyName)
+                return;
+            this._babyName = babyName;
+            this.showChart();
+        },
+        enumerable: true,
+        configurable: true
+    });
     LineChart.prototype.ngOnInit = function () {
         var _this = this;
+        if (this.babyName == null || this.babyName === "")
+            return;
         this.namerankService.getNameStatistics(this.babyName)
             .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; });
     };
     LineChart.prototype.ngAfterViewChecked = function () {
-        if (this.nameStatistics == null)
+        if (!this.babyName)
+            return;
+        if (!this.nameStatistics)
             return;
         if (this.isAfterViewChecked)
             return;
         App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);
         this.isAfterViewChecked = true;
     };
+    LineChart.prototype.showChart = function () {
+        var _this = this;
+        this.namerankService.getNameStatistics(this.babyName)
+            .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; }, App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics));
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], LineChart.prototype, "babyName", void 0);
+    ], LineChart.prototype, "babyName", null);
     LineChart = __decorate([
         core_1.Component({
             selector: "linechart",

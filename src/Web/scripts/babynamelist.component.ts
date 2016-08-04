@@ -1,6 +1,6 @@
 ﻿/// <reference path="../typings/globals/core-js/index.d.ts" />
 
-import { Component, Input, AfterViewChecked } from "@angular/core";
+import { Component, Output, EventEmitter, AfterViewChecked } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
 import { IAppTheme } from "./AppTheme";
@@ -18,6 +18,8 @@ export class BabyNameList implements AfterViewChecked {
     allNames: string[];
     errorMessage: string;
     isAfterViewChecked: boolean;
+    selectedBabyName: string;
+    @Output() babyNameSelected = new EventEmitter();
 
     constructor(private namerankService: NameStatisticsService) {
     }
@@ -38,5 +40,10 @@ export class BabyNameList implements AfterViewChecked {
 
         App.formatBabyNameList();
         this.isAfterViewChecked = true;
+    }
+
+    onGobuttonClicked(): void {
+        this.selectedBabyName = App.getSelectedBabyName();
+        this.babyNameSelected.emit(this.selectedBabyName);
     }
 }

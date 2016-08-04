@@ -1,17 +1,18 @@
-﻿<div class="col-sm-6">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <form role="form">
-                <div class="form-group">
-                    <h3>Search for Baby Name</h3>
-                    <select id="babyNameList" class="select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-                        <option></option>
-                        <option *ngFor="let name of allNames">
-                            {{name}}
-                        </option>
-                    </select>
-                </div>
-            </form>
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+            <h3>Search for Baby Name</h3>
+            <div class="input-group xs-mb-15">
+                <select id="babyNameList" class="select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                    <option></option>
+                    <option *ngFor="let name of allNames">
+                        {{name}}
+                    </option>
+                </select>
+                <span class="input-group-btn">
+                    <button type="button" (click)="onGobuttonClicked()" class="btn btn-primary">Go!</button>
+                </span>
+            </div>
         </div>
     </div>
 </div>

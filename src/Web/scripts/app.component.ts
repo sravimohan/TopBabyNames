@@ -14,6 +14,10 @@ import { BabyNameList } from "./babynamelist.component";
 
 export class AppComponent {
 
-    title = "Top Baby Names";
+    selectedBabyName:string;
     errorMessage: string;
+
+    onBabyNameSelected(babyName: any): void {
+        this.selectedBabyName = babyName;
+    }
 }

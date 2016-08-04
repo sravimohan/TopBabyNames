@@ -3,4 +3,5 @@
     dataTables: Function;
     chartsetup: Function;
     formatBabyNameList: Function;
+    getSelectedBabyName: Function;
 }

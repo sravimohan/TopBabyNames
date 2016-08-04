@@ -41,5 +41,9 @@ var App = (function () {
         });
     };
 
+    App.getSelectedBabyName = function () {
+        return $("#babyNameList").val();
+    };
+
     return App;
 })(App || {});

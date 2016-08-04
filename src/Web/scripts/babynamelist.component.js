@@ -15,6 +15,7 @@ var NameStatisticsService_1 = require("./NameStatisticsService");
 var BabyNameList = (function () {
     function BabyNameList(namerankService) {
         this.namerankService = namerankService;
+        this.babyNameSelected = new core_1.EventEmitter();
     }
     BabyNameList.prototype.ngOnInit = function () {
         var _this = this;
@@ -29,6 +30,14 @@ var BabyNameList = (function () {
         App.formatBabyNameList();
         this.isAfterViewChecked = true;
     };
+    BabyNameList.prototype.onGobuttonClicked = function () {
+        this.selectedBabyName = App.getSelectedBabyName();
+        this.babyNameSelected.emit(this.selectedBabyName);
+    };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], BabyNameList.prototype, "babyNameSelected", void 0);
     BabyNameList = __decorate([
         core_1.Component({
             selector: "babynamelist",

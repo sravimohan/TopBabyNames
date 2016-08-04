@@ -1,3 +1,4 @@
-﻿<babynamelist></babynamelist>
-<datatable [year]="2000"></datatable>
-<linechart [babyName]="'James'"></linechart>
+﻿<div class="col-sm-6">
+    <babynamelist (babyNameSelected)="onBabyNameSelected($event)"></babynamelist>
+    <linechart [babyName]="[selectedBabyName]"></linechart>
+</div>

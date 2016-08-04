@@ -63,5 +63,19 @@ namespace Web.Repository
             return NameRanks.Where(n => n.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) != -1)
                 .Select(n => new NameStatistics {Year = n.Year, Total = n.Total}).OrderBy(n => n.Year);
         }
+
+        public IEnumerable<NameSummary> GetTopNames(int count, Sex sex)
+        {
+            var query = NameRanks.Where(n => n.Sex == sex.ToDatabaseString())
+                        .GroupBy(n => n.Name)
+                        .OrderByDescending(g => g.Sum(x => x.Total))
+                        .Select(g => new NameSummary()
+                        {
+                            Name = g.Key,
+                            Total = g.Sum(x => x.Total)
+                        });
+
+            return query.Take(count);
+        }
     }
 }

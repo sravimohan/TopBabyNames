@@ -34,6 +34,10 @@ var NameRankService = (function () {
         return this.http.get("api/GetDetailsByName?name=" + name)
             .map(function (response) { return response.json(); });
     };
+    NameRankService.prototype.getTopNames = function (sex) {
+        return this.http.get("api/GetTopNames?sex=" + sex)
+            .map(function (response) { return response.json(); });
+    };
     NameRankService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');

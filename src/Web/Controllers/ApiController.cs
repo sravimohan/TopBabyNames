@@ -20,6 +20,12 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetTopNames(string sex)
+        {
+            return new ObjectResult(_repository.GetTopNames(25, sex.ToEnum()));
+        }
+
+        [HttpGet]
         public IActionResult GetByName(string name)
         {
             return new ObjectResult(_repository.GetByName(name));

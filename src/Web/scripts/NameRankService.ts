@@ -7,6 +7,7 @@ import "rxjs/Rx";
 
 import { INameRank } from './NameRank';
 import { INameStatistics } from "./NameStatistics";
+import { INameSummary } from "./NameSummary";
 
 @Injectable()
 export class NameRankService {
@@ -31,6 +32,11 @@ export class NameRankService {
     getNameDetails(name: string): Observable<INameRank[]> {
         return this.http.get("api/GetDetailsByName?name=" + name)
             .map((response: Response) => <INameRank[]>response.json());
+    }
+
+    getTopNames(sex: string): Observable<INameSummary[]> {
+        return this.http.get("api/GetTopNames?sex=" + sex)
+            .map((response: Response) => <INameSummary[]>response.json());
     }
 
     private handleError(error: Response) {

@@ -1,0 +1,44 @@
+﻿<div class="row">
+    <div class="col-sm-6">
+        <div class="widget widget-fullwidth widget-small">
+            <div class="widget-head">
+                <div class="title">Top Boy Names</div>
+            </div>
+            <table class="table table-fw-widget table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody class="no-border-x">
+                    <tr *ngFor="let nameSummary of boyNames">
+                        <td>{{ nameSummary.name }}</td>
+                        <td>{{ nameSummary.total }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="widget widget-fullwidth widget-small">
+            <div class="widget-head">
+                <div class="title">Top Girl Names</div>
+            </div>
+            <table class="table table-fw-widget table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody class="no-border-x">
+                    <tr *ngFor="let nameSummary of girlNames">
+                        <td>{{ nameSummary.name }}</td>
+                        <td>{{ nameSummary.total }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

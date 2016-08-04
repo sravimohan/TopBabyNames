@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var linechart_component_1 = require("./linechart.component");
 var nametable_component_1 = require("./nametable.component");
 var babynamelist_component_1 = require("./babynamelist.component");
+var topnames_component_1 = require("./topnames.component");
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -23,7 +24,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: "top-baby-names-app",
             templateUrl: "/templates/app.html",
-            directives: [babynamelist_component_1.BabyNameList, linechart_component_1.LineChart, nametable_component_1.NameTable]
+            directives: [babynamelist_component_1.BabyNameList, linechart_component_1.LineChart, nametable_component_1.NameTable, topnames_component_1.TopNames]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

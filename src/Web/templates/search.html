@@ -1,0 +1,17 @@
+﻿<div class="row">
+    <babynamelist (babyNameSelected)="onBabyNameSelected($event)"></babynamelist>
+    <div class="tab-container">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#chart" data-toggle="tab" aria-expanded="true">Chart</a></li>
+            <li class=""><a href="#data" data-toggle="tab" aria-expanded="false">Data</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="chart" class="tab-pane cont active">
+                <linechart [babyName]="[selectedBabyName]"></linechart>
+            </div>
+            <div id="data" class="tab-pane cont">
+                <nametable [babyName]="[selectedBabyName]"></nametable>
+            </div>
+        </div>
+    </div>
+</div>

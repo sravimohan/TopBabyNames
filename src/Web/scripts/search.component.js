@@ -10,23 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var topnames_component_1 = require("./topnames.component");
-var search_component_1 = require("./search.component");
-var AppComponent = (function () {
-    function AppComponent() {
+var linechart_component_1 = require("./linechart.component");
+var nametable_component_1 = require("./nametable.component");
+var babynamelist_component_1 = require("./babynamelist.component");
+var Search = (function () {
+    function Search() {
     }
-    AppComponent.prototype.onBabyNameSelected = function (babyName) {
+    Search.prototype.onBabyNameSelected = function (babyName) {
         this.selectedBabyName = babyName;
     };
-    AppComponent = __decorate([
+    Search = __decorate([
         core_1.Component({
-            selector: "top-baby-names-app",
-            templateUrl: "/templates/app.html",
-            directives: [search_component_1.Search, topnames_component_1.TopNames]
+            selector: "search",
+            templateUrl: "/templates/search.html",
+            directives: [babynamelist_component_1.BabyNameList, linechart_component_1.LineChart, nametable_component_1.NameTable]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], Search);
+    return Search;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.Search = Search;
+//# sourceMappingURL=search.component.js.map

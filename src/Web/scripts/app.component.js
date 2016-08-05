@@ -10,19 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var topnames_component_1 = require("./topnames.component");
-var search_component_1 = require("./search.component");
+var router_1 = require('@angular/router');
 var AppComponent = (function () {
     function AppComponent() {
     }
-    AppComponent.prototype.onBabyNameSelected = function (babyName) {
-        this.selectedBabyName = babyName;
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: "top-baby-names-app",
             templateUrl: "/templates/app.html",
-            directives: [search_component_1.Search, topnames_component_1.TopNames]
+            directives: [router_1.ROUTER_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

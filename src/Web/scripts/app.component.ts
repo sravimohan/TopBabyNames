@@ -1,22 +1,13 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
 
 import { Component } from "@angular/core";
-
-import { TopNames } from "./topnames.component";
-import { Search } from "./search.component";
+import { ROUTER_DIRECTIVES }  from '@angular/router';
 
 @Component({
     selector: "top-baby-names-app",
     templateUrl: "/templates/app.html",
-    directives: [Search, TopNames]
+    directives: [ROUTER_DIRECTIVES]
 })
 
 export class AppComponent {
-
-    selectedBabyName:string;
-    errorMessage: string;
-
-    onBabyNameSelected(babyName: any): void {
-        this.selectedBabyName = babyName;
-    }
 }

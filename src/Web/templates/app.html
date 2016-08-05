@@ -66,10 +66,13 @@
                     <a href="#"><i class="icon s7-monitor"></i><span>Dashboard</span></a>
                 </li>
                 <li class="parent">
+                    <a routerLink="/Search" routerLinkActive="active"><i class="icon s7-search"></i><span>Search</span></a>
+                </li>
+                <li class="parent">
                     <a href="#"><i class="icon s7-graph"></i><span>Charts</span></a>
                 </li>
                 <li class="parent">
-                    <a href="#"><i class="icon s7-box2"></i><span>Tables</span></a>
+                    <a routerLink="/Tables" routerLinkActive="active"><i class="icon s7-box2"></i><span>Tables</span></a>
                 </li>
             </ul>
             <!--Sidebar bottom content-->
@@ -80,8 +83,7 @@
             <h1>Top Baby Names</h1>
         </div>
         <div class="main-content">
-            <topnames></topnames>
-            <search></search>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

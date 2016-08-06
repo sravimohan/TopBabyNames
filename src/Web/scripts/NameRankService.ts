@@ -30,7 +30,7 @@ export class NameRankService {
     }
 
     getNameDetails(name: string): Observable<INameRank[]> {
-        return this.http.get("api/GetDetailsByName?name=" + name)
+        return this.http.get("api/GetByName?name=" + name)
             .map((response: Response) => <INameRank[]>response.json());
     }
 

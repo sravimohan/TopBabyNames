@@ -32,12 +32,6 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetDetailsByName(string name)
-        {
-            return new ObjectResult(_repository.GetDetailsByName(name));
-        }
-
-        [HttpGet]
         public IActionResult GetStatsByName(string name)
         {
             var nameStatistics = _repository.GetStatsByName(name).ToList();

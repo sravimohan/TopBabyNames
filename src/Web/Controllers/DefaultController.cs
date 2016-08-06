@@ -2,7 +2,6 @@
 
 namespace Web.Controllers
 {
-    [Route("[controller]")]
     public class DefaultController : Controller
     {
         [HttpGet]

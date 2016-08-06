@@ -31,7 +31,7 @@ var NameRankService = (function () {
             .map(function (response) { return response.json(); });
     };
     NameRankService.prototype.getNameDetails = function (name) {
-        return this.http.get("api/GetDetailsByName?name=" + name)
+        return this.http.get("api/GetByName?name=" + name)
             .map(function (response) { return response.json(); });
     };
     NameRankService.prototype.getTopNames = function (sex) {

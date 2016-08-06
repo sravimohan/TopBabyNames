@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='default' />
+/// <binding BeforeBuild='ts, tstemplate' AfterBuild='tstheme-assets' ProjectOpened='angular2-lib' />
 var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
@@ -11,37 +11,13 @@ gulp.task('clean', function () {
         .pipe(clean(), { read: false });
 });
 
-gulp.task("scriptsNStyles", function () {
-    gulp.src(['core-js/client/**',
-        'systemjs/dist/system.src.js',
-        'reflect-metadata/**',
-        'rxjs/**',
-        'zone.js/dist/**',
-        '@angular/**',
-        'jquery/dist/jquery.*js',
-        'bootstrap/dist/js/bootstrap.*js'
-    ], {
-        cwd: "node_modules/**"
-    }).pipe(gulp.dest("./wwwroot/libs"));
-});
-
-gulp.task("systemjs", function () {
-    gulp.src(['systemjs.config.js']).pipe(gulp.dest("./wwwroot/"));
-});
-
 var tsProject = ts.createProject('scripts/tsconfig.json');
-gulp.task('ts', function (done) {
+gulp.task('ts', function () {
     var tsResult = gulp.src([
             "scripts/*.ts"
     ])
         .pipe(ts(tsProject), undefined, ts.reporter.fullReporter());
     return tsResult.js.pipe(gulp.dest('./wwwroot/appScripts'));
-});
-
-gulp.task('watch', ['watch.ts']);
-
-gulp.task('watch.ts', ['ts'], function () {
-    return gulp.watch('scripts/*.ts', ['ts']);
 });
 
 gulp.task("tstemplate", function () {
@@ -57,7 +33,14 @@ gulp.task("npm-lib", function () {
     gulp.src(["node_modules/rxjs/operator/**/*"]).pipe(gulp.dest("wwwroot/libs/rxjs/operators"));
 });
 
-gulp.task('default', ['ts', 'tstemplate']);
-gulp.task('devTasks', ['systemjs', 'npm-lib', 'tstheme-assets', 'default']);
+gulp.task("angular2-lib", function () {
+    gulp.src(['systemjs.config.js']).pipe(gulp.dest("./wwwroot/"));
+    gulp.src(["node_modules/@angular/**/*"]).pipe(gulp.dest("wwwroot/libs/@angular/"));
+    gulp.src(["node_modules/rxjs/**/*"]).pipe(gulp.dest("wwwroot/libs/rxjs/"));
+    gulp.src(["node_modules/rxjs/operator/**/*"]).pipe(gulp.dest("wwwroot/libs/rxjs/operators"));
+    gulp.src(["node_modules/core-js/client/shim.min.js"]).pipe(gulp.dest("wwwroot/libs"));
+    gulp.src(["node_modules/zone.js/dist/zone.js"]).pipe(gulp.dest("wwwroot/libs"));
+    gulp.src(["node_modules/reflect-metadata/Reflect.js"]).pipe(gulp.dest("wwwroot/libs"));
+    gulp.src(["node_modules/systemjs/dist/system.src.js"]).pipe(gulp.dest("wwwroot/libs"));
+});
 
-gulp.task('dev-rel', ['systemjs', 'scriptsNStyles']);

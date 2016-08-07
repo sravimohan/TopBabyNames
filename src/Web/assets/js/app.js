@@ -50,5 +50,9 @@ var App = (function () {
         return $("#babyNameList").val();
     };
 
+    App.dataTables = function (datatableName) {
+        $(datatableName).dataTable();
+    };
+
     return App;
 })(App || {});

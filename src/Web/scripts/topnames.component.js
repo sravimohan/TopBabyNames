@@ -13,15 +13,15 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
 var TopNames = (function () {
-    function TopNames(namerankService) {
-        this.namerankService = namerankService;
+    function TopNames(_namerankService) {
+        this._namerankService = _namerankService;
     }
     TopNames.prototype.ngOnInit = function () {
         var _this = this;
-        this.namerankService.getTopNames("b")
-            .subscribe(function (boyNames) { return _this.boyNames = boyNames; }, function (error) { return _this.errorMessage = error; });
-        this.namerankService.getTopNames("g")
-            .subscribe(function (girlNames) { return _this.girlNames = girlNames; }, function (error) { return _this.errorMessage = error; });
+        this._namerankService.getTopNames("b")
+            .subscribe(function (boyNames) { return _this._boyNames = boyNames; }, function (error) { return _this.errorMessage = error; });
+        this._namerankService.getTopNames("g")
+            .subscribe(function (girlNames) { return _this._girlNames = girlNames; }, function (error) { return _this.errorMessage = error; });
     };
     TopNames = __decorate([
         core_1.Component({

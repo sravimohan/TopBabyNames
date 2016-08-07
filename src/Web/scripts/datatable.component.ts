@@ -19,15 +19,15 @@ export class DataTable {
     girlNameRanks: INameRank[];
     errorMessage: string;
 
-    constructor(private namerankService: NameRankService) {
+    constructor(private _namerankService: NameRankService) {
     }
 
     ngOnInit(): void {
-        this.namerankService.getNameRanks(this.year, "B")
+        this._namerankService.getNameRanks(this.year, "B")
             .subscribe((nameRanks: any) => this.boyNameRanks = nameRanks,
             error => this.errorMessage = <any>error);
 
-        this.namerankService.getNameRanks(this.year, "G")
+        this._namerankService.getNameRanks(this.year, "G")
             .subscribe((nameRanks: any) => this.girlNameRanks = nameRanks,
             error => this.errorMessage = <any>error);
     }

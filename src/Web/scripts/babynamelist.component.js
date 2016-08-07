@@ -13,13 +13,13 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
 var BabyNameList = (function () {
-    function BabyNameList(namerankService) {
-        this.namerankService = namerankService;
+    function BabyNameList(_namerankService) {
+        this._namerankService = _namerankService;
         this.babyNameSelected = new core_1.EventEmitter();
     }
     BabyNameList.prototype.ngOnInit = function () {
         var _this = this;
-        this.namerankService.getAllNames()
+        this._namerankService.getAllNames()
             .subscribe(function (allNames) { return _this.allNames = allNames; }, function (error) { return _this.errorMessage = error; });
     };
     BabyNameList.prototype.ngAfterViewChecked = function () {

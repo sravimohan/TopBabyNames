@@ -13,8 +13,8 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
 var LineChart = (function () {
-    function LineChart(namerankService) {
-        this.namerankService = namerankService;
+    function LineChart(_namerankService) {
+        this._namerankService = _namerankService;
     }
     Object.defineProperty(LineChart.prototype, "nameStatistics", {
         get: function () {
@@ -44,7 +44,7 @@ var LineChart = (function () {
         var _this = this;
         if (!this.babyName)
             return;
-        this.namerankService.getNameStatistics(this.babyName)
+        this._namerankService.getNameStatistics(this.babyName)
             .subscribe(function (nameStatistics) { return _this.nameStatistics = nameStatistics; }, function (error) { return _this.errorMessage = error; });
     };
     __decorate([

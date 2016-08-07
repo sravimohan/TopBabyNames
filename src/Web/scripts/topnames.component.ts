@@ -13,20 +13,20 @@ import { NameRankService } from "./NameRankService";
 
 export class TopNames {
 
-    private boyNames: INameSummary[];
-    private girlNames: INameSummary[];
+    private _boyNames: INameSummary[];
+    private _girlNames: INameSummary[];
     errorMessage: string;
 
-    constructor(private namerankService: NameRankService) {
+    constructor(private _namerankService: NameRankService) {
     }
 
     ngOnInit(): void {
-        this.namerankService.getTopNames("b")
-            .subscribe((boyNames: any) => this.boyNames = boyNames,
+        this._namerankService.getTopNames("b")
+            .subscribe((boyNames: any) => this._boyNames = boyNames,
             error => this.errorMessage = <any>error);
 
-        this.namerankService.getTopNames("g")
-            .subscribe((girlNames: any) => this.girlNames = girlNames,
+        this._namerankService.getTopNames("g")
+            .subscribe((girlNames: any) => this._girlNames = girlNames,
             error => this.errorMessage = <any>error);
     }
 }

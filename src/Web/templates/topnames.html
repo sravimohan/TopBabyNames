@@ -6,16 +6,18 @@
             </div>
             <table class="table table-fw-widget table-striped">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Total</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Total</th>
+                </tr>
                 </thead>
                 <tbody class="no-border-x">
-                    <tr *ngFor="let nameSummary of boyNames">
-                        <td>{{ nameSummary.name }}</td>
-                        <td>{{ nameSummary.total }}</td>
-                    </tr>
+                <tr *ngFor="let nameSummary of boyNames; let ndx = index">
+                    <td>{{ndx+1}}</td>
+                    <td>{{ nameSummary.name }}</td>
+                    <td>{{ nameSummary.total }}</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -28,12 +30,14 @@
             <table class="table table-fw-widget table-striped">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Total</th>
                     </tr>
                 </thead>
                 <tbody class="no-border-x">
-                    <tr *ngFor="let nameSummary of girlNames">
+                    <tr *ngFor="let nameSummary of girlNames; let ndx = index">
+                        <td>{{ndx+1}}</td>
                         <td>{{ nameSummary.name }}</td>
                         <td>{{ nameSummary.total }}</td>
                     </tr>

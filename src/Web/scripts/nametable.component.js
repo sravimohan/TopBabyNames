@@ -13,8 +13,8 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
 var NameTable = (function () {
-    function NameTable(namerankService) {
-        this.namerankService = namerankService;
+    function NameTable(_namerankService) {
+        this._namerankService = _namerankService;
     }
     Object.defineProperty(NameTable.prototype, "babyName", {
         get: function () {
@@ -33,7 +33,7 @@ var NameTable = (function () {
         var _this = this;
         if (!this.babyName)
             return;
-        this.namerankService.getNameDetails(this.babyName)
+        this._namerankService.getNameDetails(this.babyName)
             .subscribe(function (nameRanks) { return _this.nameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
     };
     __decorate([

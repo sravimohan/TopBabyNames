@@ -13,14 +13,14 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
 var DataTable = (function () {
-    function DataTable(namerankService) {
-        this.namerankService = namerankService;
+    function DataTable(_namerankService) {
+        this._namerankService = _namerankService;
     }
     DataTable.prototype.ngOnInit = function () {
         var _this = this;
-        this.namerankService.getNameRanks(this.year, "B")
+        this._namerankService.getNameRanks(this.year, "B")
             .subscribe(function (nameRanks) { return _this.boyNameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
-        this.namerankService.getNameRanks(this.year, "G")
+        this._namerankService.getNameRanks(this.year, "G")
             .subscribe(function (nameRanks) { return _this.girlNameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
     };
     __decorate([

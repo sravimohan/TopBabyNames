@@ -21,12 +21,12 @@ export class BabyNameList implements AfterViewChecked {
     selectedBabyName: string;
     @Output() babyNameSelected = new EventEmitter();
 
-    constructor(private namerankService: NameRankService) {
+    constructor(private _namerankService: NameRankService) {
     }
 
     ngOnInit(): void {
 
-        this.namerankService.getAllNames()
+        this._namerankService.getAllNames()
             .subscribe((allNames: any) => this.allNames = allNames,
             error => this.errorMessage = <any>error);
     }

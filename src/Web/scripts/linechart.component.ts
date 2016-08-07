@@ -41,7 +41,7 @@ export class LineChart {
         this.showChart();
     }
 
-    constructor(private namerankService: NameRankService) {
+    constructor(private _namerankService: NameRankService) {
     }
 
     showChart(): void {
@@ -49,7 +49,7 @@ export class LineChart {
         if (!this.babyName)
             return;
 
-        this.namerankService.getNameStatistics(this.babyName)
+        this._namerankService.getNameStatistics(this.babyName)
             .subscribe(
                 (nameStatistics: any) => this.nameStatistics = nameStatistics,
                 error => this.errorMessage = <any>error);

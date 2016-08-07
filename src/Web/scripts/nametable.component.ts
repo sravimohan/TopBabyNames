@@ -31,14 +31,14 @@ export class NameTable {
         this.showTable();
     }
 
-    constructor(private namerankService: NameRankService) {
+    constructor(private _namerankService: NameRankService) {
     }
 
     showTable(): void {
         if (!this.babyName)
             return;
 
-        this.namerankService.getNameDetails(this.babyName)
+        this._namerankService.getNameDetails(this.babyName)
             .subscribe((nameRanks: any) => this.nameRanks = nameRanks,
             error => this.errorMessage = <any>error);
     }

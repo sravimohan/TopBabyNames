@@ -5,9 +5,9 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/operators/map";
 import "rxjs/Rx";
 
-import { INameRank } from './NameRank';
-import { INameStatistics } from "./NameStatistics";
-import { INameSummary } from "./NameSummary";
+import { INameRank } from "./INameRank";
+import { INameByYear } from "./INameByYear";
+import { INameSummary } from "./INameSummary";
 
 @Injectable()
 export class NameRankService {
@@ -24,9 +24,9 @@ export class NameRankService {
             .map((response: Response) => <INameRank[]>response.json());
     }
 
-    getNameStatistics(name: string): Observable<INameStatistics[]> {
+    getNameStatistics(name: string): Observable<INameByYear[]> {
         return this.http.get("api/GetStatsByName?name=" + name)
-            .map((response: Response) => <INameStatistics[]>response.json());
+            .map((response: Response) => <INameByYear[]>response.json());
     }
 
     getNameDetails(name: string): Observable<INameRank[]> {

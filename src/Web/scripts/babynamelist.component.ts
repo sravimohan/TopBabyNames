@@ -3,7 +3,7 @@
 import { Component, Output, EventEmitter, AfterViewChecked } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
-import { IAppTheme } from "./AppTheme";
+import { IAppTheme } from "./IAppTheme";
 import { NameRankService } from "./NameRankService";
 
 declare var App: IAppTheme;

@@ -2,7 +2,7 @@
 import { Component, Input } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
-import { INameRank } from "./NameRank";
+import { INameRank } from "./INameRank";
 import { NameRankService } from "./NameRankService";
 
 @Component({

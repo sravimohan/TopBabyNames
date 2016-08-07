@@ -47,13 +47,13 @@ namespace Web.Repository
             return NameRanks.Where(n => n.Year.Equals(year) && n.Sex.Equals(sex.ToDatabaseString())).OrderBy(n => n.Rank);
         }
 
-        public IEnumerable<NameStatistics> GetStatsByName(string name)
+        public IEnumerable<NameByYear> GetStatsByName(string name)
         {
             if (string.IsNullOrEmpty(name))
-                return Enumerable.Empty<NameStatistics>();
+                return Enumerable.Empty<NameByYear>();
 
             return NameRanks.Where(n => n.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) != -1)
-                .Select(n => new NameStatistics {Year = n.Year, Total = n.Total}).OrderBy(n => n.Year);
+                .Select(n => new NameByYear {Year = n.Year, Total = n.Total}).OrderBy(n => n.Year);
         }
 
         public IEnumerable<NameSummary> GetTopNames(int count, Sex sex)

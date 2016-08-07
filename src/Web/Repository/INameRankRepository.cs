@@ -8,7 +8,7 @@ namespace Web.Repository
         IEnumerable<string> GetAllNames();
         IEnumerable<NameRank> GetByName(string name);
         IEnumerable<NameRank> GetByYear(int year, Sex sex);
-        IEnumerable<NameStatistics> GetStatsByName(string name);
+        IEnumerable<NameByYear> GetStatsByName(string name);
         IEnumerable<NameSummary> GetTopNames(int count, Sex sex);
 
     }

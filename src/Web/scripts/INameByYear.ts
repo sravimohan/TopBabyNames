@@ -1,4 +1,4 @@
-﻿export interface INameStatistics {
+﻿export interface INameByYear {
     year: number;
     total: number;
 }

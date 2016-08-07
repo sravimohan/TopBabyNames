@@ -2,8 +2,8 @@
 import { Component, Input } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
-import { IAppTheme } from "./AppTheme";
-import { INameRank } from "./NameRank";
+import { IAppTheme } from "./IAppTheme";
+import { INameRank } from "./INameRank";
 import { NameRankService } from "./NameRankService";
 
 @Component({

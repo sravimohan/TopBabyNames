@@ -2,8 +2,8 @@
 import { Component, Input } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 
-import { IAppTheme } from "./AppTheme";
-import { INameStatistics } from "./NameStatistics";
+import { IAppTheme } from "./IAppTheme";
+import { INameByYear } from "./INameByYear";
 import { NameRankService } from "./NameRankService";
 
 declare var App: IAppTheme;
@@ -16,14 +16,14 @@ declare var App: IAppTheme;
 
 export class LineChart {
     private _babyName: string;
-    private _nameStatistics: INameStatistics[];
+    private _nameStatistics: INameByYear[];
     errorMessage: string;
 
-    get nameStatistics(): INameStatistics[] {
+    get nameStatistics(): INameByYear[] {
         return this._nameStatistics;
     }
 
-    set nameStatistics(nameStatistics: INameStatistics[]) {
+    set nameStatistics(nameStatistics: INameByYear[]) {
         this._nameStatistics = nameStatistics;
         App.chartsetup(this.babyName, "#lineChartPlaceHolder", this.nameStatistics);
     }

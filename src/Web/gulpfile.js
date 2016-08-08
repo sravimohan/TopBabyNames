@@ -28,10 +28,6 @@ gulp.task("tstheme-assets", function () {
     gulp.src(["assets/**/*"]).pipe(gulp.dest("wwwroot/assets"));
 });
 
-gulp.task("npm-lib", function () {
-    gulp.src(["node_modules/**/*"]).pipe(gulp.dest("wwwroot/libs"));
-});
-
 gulp.task("angular2-lib", function () {
     gulp.src(['systemjs.config.js']).pipe(gulp.dest("./wwwroot/"));
     gulp.src(["node_modules/@angular/**/*"]).pipe(gulp.dest("wwwroot/libs/@angular/"));

@@ -12,9 +12,10 @@ import { NameRankService } from "./NameRankService";
 })
 
 export class TopNames {
+    private _sex: string;
     private _count: number;
-    private _boyNames: INameSummary[];
-    private _girlNames: INameSummary[];
+    private _names: INameSummary[];
+
     errorMessage: string;
 
     @Input()
@@ -23,38 +24,36 @@ export class TopNames {
         this.loadData();
     }
 
+    @Input()
+    set sex(sex: string) {
+        this._sex = sex;
+        this.loadData();
+    }
+
+    get sexDescription(): string {
+        return this._sex === "g" ? "Girl" : "Boy";
+    }
+
     get count(): number {
         return this._count;
     }
 
-    get boyNames(): INameSummary[] {
-        return this._boyNames;
+    get names(): INameSummary[] {
+        return this._names;
     }
 
     @Input()
-    set boyNames(boyNames: INameSummary[]) {
-        this._boyNames = boyNames;
-    }
-
-    get girlNames(): INameSummary[] {
-        return this._girlNames;
-    }
-
-    @Input()
-    set girlNames(girlNames: INameSummary[]) {
-        this._girlNames = girlNames;
+    set names(names: INameSummary[]) {
+        this.loadData();
+        this._names = names;
     }
 
     constructor(private _namerankService: NameRankService) {
     }
 
     loadData(): void {
-        this._namerankService.getTopNames("b", this.count)
-            .subscribe((boyNames: any) => this.boyNames = boyNames,
-            error => this.errorMessage = <any>error);
-
-        this._namerankService.getTopNames("g", this.count)
-            .subscribe((girlNames: any) => this.girlNames = girlNames,
+        this._namerankService.getTopNames(this._sex, this.count)
+            .subscribe((names: any) => this.names = names,
             error => this.errorMessage = <any>error);
     }
 }

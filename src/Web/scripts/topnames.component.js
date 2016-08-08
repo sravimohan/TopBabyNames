@@ -26,32 +26,36 @@ var TopNames = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(TopNames.prototype, "boyNames", {
-        get: function () {
-            return this._boyNames;
-        },
-        set: function (boyNames) {
-            this._boyNames = boyNames;
+    Object.defineProperty(TopNames.prototype, "sex", {
+        set: function (sex) {
+            this._sex = sex;
+            this.loadData();
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(TopNames.prototype, "girlNames", {
+    Object.defineProperty(TopNames.prototype, "sexDescription", {
         get: function () {
-            return this._girlNames;
+            return this._sex === "g" ? "Girl" : "Boy";
         },
-        set: function (girlNames) {
-            this._girlNames = girlNames;
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TopNames.prototype, "names", {
+        get: function () {
+            return this._names;
+        },
+        set: function (names) {
+            this.loadData();
+            this._names = names;
         },
         enumerable: true,
         configurable: true
     });
     TopNames.prototype.loadData = function () {
         var _this = this;
-        this._namerankService.getTopNames("b", this.count)
-            .subscribe(function (boyNames) { return _this.boyNames = boyNames; }, function (error) { return _this.errorMessage = error; });
-        this._namerankService.getTopNames("g", this.count)
-            .subscribe(function (girlNames) { return _this.girlNames = girlNames; }, function (error) { return _this.errorMessage = error; });
+        this._namerankService.getTopNames(this._sex, this.count)
+            .subscribe(function (names) { return _this.names = names; }, function (error) { return _this.errorMessage = error; });
     };
     __decorate([
         core_1.Input(), 
@@ -60,12 +64,13 @@ var TopNames = (function () {
     ], TopNames.prototype, "count", null);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Array)
-    ], TopNames.prototype, "boyNames", null);
+        __metadata('design:type', String), 
+        __metadata('design:paramtypes', [String])
+    ], TopNames.prototype, "sex", null);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], TopNames.prototype, "girlNames", null);
+    ], TopNames.prototype, "names", null);
     TopNames = __decorate([
         core_1.Component({
             selector: "topnames",

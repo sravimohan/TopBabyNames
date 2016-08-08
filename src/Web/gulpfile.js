@@ -30,7 +30,6 @@ gulp.task("tstheme-assets", function () {
 
 gulp.task("npm-lib", function () {
     gulp.src(["node_modules/**/*"]).pipe(gulp.dest("wwwroot/libs"));
-    gulp.src(["node_modules/rxjs/operator/**/*"]).pipe(gulp.dest("wwwroot/libs/rxjs/operators"));
 });
 
 gulp.task("angular2-lib", function () {

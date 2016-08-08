@@ -1,6 +1,5 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
 import { Component, Input } from "@angular/core";
-import { HTTP_PROVIDERS } from "@angular/http";
 
 import { INameSummary } from "./INameSummary";
 import { NameRankService } from "./NameRankService";
@@ -8,7 +7,7 @@ import { NameRankService } from "./NameRankService";
 @Component({
     selector: "topnames",
     templateUrl: "/templates/topnames.html",
-    providers: [NameRankService, HTTP_PROVIDERS]
+    providers: [NameRankService]
 })
 
 export class TopNames {
@@ -17,16 +16,31 @@ export class TopNames {
     private _girlNames: INameSummary[];
     errorMessage: string;
 
-    constructor(private _namerankService: NameRankService) {
+    get boyNames(): INameSummary[] {
+        return this._boyNames;
     }
 
-    ngOnInit(): void {
+    @Input()
+    set boyNames(boyNames: INameSummary[]) {
+        this._boyNames = boyNames;
+    }
+
+    get girlNames(): INameSummary[] {
+        return this._girlNames;
+    }
+
+    @Input()
+    set girlNames(girlNames: INameSummary[]) {
+        this._girlNames = girlNames;
+    }
+
+    constructor(private _namerankService: NameRankService) {
         this._namerankService.getTopNames("b")
-            .subscribe((boyNames: any) => this._boyNames = boyNames,
+            .subscribe((boyNames: any) => this.boyNames = boyNames,
             error => this.errorMessage = <any>error);
 
         this._namerankService.getTopNames("g")
-            .subscribe((girlNames: any) => this._girlNames = girlNames,
+            .subscribe((girlNames: any) => this.girlNames = girlNames,
             error => this.errorMessage = <any>error);
     }
 }

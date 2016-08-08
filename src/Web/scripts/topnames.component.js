@@ -10,24 +10,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 /// <reference path="../typings/globals/core-js/index.d.ts" />
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
 var NameRankService_1 = require("./NameRankService");
 var TopNames = (function () {
     function TopNames(_namerankService) {
-        this._namerankService = _namerankService;
-    }
-    TopNames.prototype.ngOnInit = function () {
         var _this = this;
+        this._namerankService = _namerankService;
         this._namerankService.getTopNames("b")
-            .subscribe(function (boyNames) { return _this._boyNames = boyNames; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (boyNames) { return _this.boyNames = boyNames; }, function (error) { return _this.errorMessage = error; });
         this._namerankService.getTopNames("g")
-            .subscribe(function (girlNames) { return _this._girlNames = girlNames; }, function (error) { return _this.errorMessage = error; });
-    };
+            .subscribe(function (girlNames) { return _this.girlNames = girlNames; }, function (error) { return _this.errorMessage = error; });
+    }
+    Object.defineProperty(TopNames.prototype, "boyNames", {
+        get: function () {
+            return this._boyNames;
+        },
+        set: function (boyNames) {
+            this._boyNames = boyNames;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TopNames.prototype, "girlNames", {
+        get: function () {
+            return this._girlNames;
+        },
+        set: function (girlNames) {
+            this._girlNames = girlNames;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], TopNames.prototype, "boyNames", null);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], TopNames.prototype, "girlNames", null);
     TopNames = __decorate([
         core_1.Component({
             selector: "topnames",
             templateUrl: "/templates/topnames.html",
-            providers: [NameRankService_1.NameRankService, http_1.HTTP_PROVIDERS]
+            providers: [NameRankService_1.NameRankService]
         }), 
         __metadata('design:paramtypes', [NameRankService_1.NameRankService])
     ], TopNames);

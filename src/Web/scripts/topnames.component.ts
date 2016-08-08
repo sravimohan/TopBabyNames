@@ -31,7 +31,7 @@ export class TopNames {
 
     @Input()
     set sex(sex: string) {
-        if (sex == null)
+        if (sex == null || sex === this._sex)
             return;
 
         this._sex = sex;

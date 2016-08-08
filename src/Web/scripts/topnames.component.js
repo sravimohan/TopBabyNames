@@ -32,7 +32,7 @@ var TopNames = (function () {
     });
     Object.defineProperty(TopNames.prototype, "sex", {
         set: function (sex) {
-            if (sex == null)
+            if (sex == null || sex === this._sex)
                 return;
             this._sex = sex;
             this.loadData();

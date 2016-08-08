@@ -2,14 +2,14 @@
 
 import { AppComponent } from "./app.component";
 import { Dashboard } from "./dashboard.component";
-import { TopNames } from "./topnames.component";
+import { Tables } from "./tables.component";
 import { Search } from "./search.component";
 
 const routes: RouterConfig = [
     { path: 'Dashboard', component: Dashboard },
     { path: 'Search', component: Search },
-    { path: 'Tables', component: TopNames },
-    { path: '**', component: Search }
+    { path: 'Tables', component: Tables },
+    { path: '**', component: Dashboard }
 ];
 
 export const appRouterProviders = [

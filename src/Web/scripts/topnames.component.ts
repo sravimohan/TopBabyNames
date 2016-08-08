@@ -6,15 +6,26 @@ import { NameRankService } from "./NameRankService";
 
 @Component({
     selector: "topnames",
+    inputs:["count"],
     templateUrl: "/templates/topnames.html",
     providers: [NameRankService]
 })
 
 export class TopNames {
-
+    private _count: number;
     private _boyNames: INameSummary[];
     private _girlNames: INameSummary[];
     errorMessage: string;
+
+    @Input()
+    set count(count: number) {
+        this._count = count;
+        this.loadData();
+    }
+
+    get count(): number {
+        return this._count;
+    }
 
     get boyNames(): INameSummary[] {
         return this._boyNames;
@@ -35,11 +46,14 @@ export class TopNames {
     }
 
     constructor(private _namerankService: NameRankService) {
-        this._namerankService.getTopNames("b")
+    }
+
+    loadData(): void {
+        this._namerankService.getTopNames("b", this.count)
             .subscribe((boyNames: any) => this.boyNames = boyNames,
             error => this.errorMessage = <any>error);
 
-        this._namerankService.getTopNames("g")
+        this._namerankService.getTopNames("g", this.count)
             .subscribe((girlNames: any) => this.girlNames = girlNames,
             error => this.errorMessage = <any>error);
     }

@@ -20,9 +20,9 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetTopNames(string sex)
+        public IActionResult GetTopNames(string sex, int count)
         {
-            return new ObjectResult(_repository.GetTopNames(25, sex.ToEnum()));
+            return new ObjectResult(_repository.GetTopNames(count, sex.ToEnum()));
         }
 
         [HttpGet]

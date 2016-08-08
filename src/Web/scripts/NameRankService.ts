@@ -34,8 +34,8 @@ export class NameRankService {
             .map((response: Response) => <INameRank[]>response.json());
     }
 
-    getTopNames(sex: string): Observable<INameSummary[]> {
-        return this.http.get("api/GetTopNames?sex=" + sex)
+    getTopNames(sex: string, count : number): Observable<INameSummary[]> {
+        return this.http.get("api/GetTopNames?sex=" + sex + "&count=" + count)
             .map((response: Response) => <INameSummary[]>response.json());
     }
 

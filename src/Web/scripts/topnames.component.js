@@ -13,13 +13,19 @@ var core_1 = require("@angular/core");
 var NameRankService_1 = require("./NameRankService");
 var TopNames = (function () {
     function TopNames(_namerankService) {
-        var _this = this;
         this._namerankService = _namerankService;
-        this._namerankService.getTopNames("b")
-            .subscribe(function (boyNames) { return _this.boyNames = boyNames; }, function (error) { return _this.errorMessage = error; });
-        this._namerankService.getTopNames("g")
-            .subscribe(function (girlNames) { return _this.girlNames = girlNames; }, function (error) { return _this.errorMessage = error; });
     }
+    Object.defineProperty(TopNames.prototype, "count", {
+        get: function () {
+            return this._count;
+        },
+        set: function (count) {
+            this._count = count;
+            this.loadData();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(TopNames.prototype, "boyNames", {
         get: function () {
             return this._boyNames;
@@ -40,6 +46,18 @@ var TopNames = (function () {
         enumerable: true,
         configurable: true
     });
+    TopNames.prototype.loadData = function () {
+        var _this = this;
+        this._namerankService.getTopNames("b", this.count)
+            .subscribe(function (boyNames) { return _this.boyNames = boyNames; }, function (error) { return _this.errorMessage = error; });
+        this._namerankService.getTopNames("g", this.count)
+            .subscribe(function (girlNames) { return _this.girlNames = girlNames; }, function (error) { return _this.errorMessage = error; });
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number), 
+        __metadata('design:paramtypes', [Number])
+    ], TopNames.prototype, "count", null);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
@@ -51,6 +69,7 @@ var TopNames = (function () {
     TopNames = __decorate([
         core_1.Component({
             selector: "topnames",
+            inputs: ["count"],
             templateUrl: "/templates/topnames.html",
             providers: [NameRankService_1.NameRankService]
         }), 

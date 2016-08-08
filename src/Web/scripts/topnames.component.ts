@@ -60,7 +60,8 @@ export class TopNames implements OnInit{
         this._sub = this._route
             .params
             .subscribe(params => {
-                this._sex = params["sex"];
+                if (params["sex"] != null)
+                    this._sex = params["sex"];
                 this._namerankService.getTopNames(this._sex, this.count)
                     .subscribe((names: any) => this.names = names,
                     error => this.errorMessage = <any>error);

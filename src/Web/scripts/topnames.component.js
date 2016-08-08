@@ -62,7 +62,8 @@ var TopNames = (function () {
         this._sub = this._route
             .params
             .subscribe(function (params) {
-            _this._sex = params["sex"];
+            if (params["sex"] != null)
+                _this._sex = params["sex"];
             _this._namerankService.getTopNames(_this._sex, _this.count)
                 .subscribe(function (names) { return _this.names = names; }, function (error) { return _this.errorMessage = error; });
         });

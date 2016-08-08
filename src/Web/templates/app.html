@@ -68,14 +68,29 @@
                 <li class="parent">
                     <a routerLink="/Search" routerLinkActive="active"><i class="icon s7-search"></i><span>Search</span></a>
                 </li>
-                <li class="parent">
+                <li class="parent active open">
                     <a href="#"><i class="icon s7-box2"></i><span>Tables</span></a>
                     <ul class="sub-menu">
-                        <li>
-                            <a routerLink="/Tables" routerLinkActive="active"><i class="icon s7-box2"></i><span>All Time Boys</span></a>
-                        </li>
-                        <li>
-                            <a routerLink="/Tables" routerLinkActive="active"><i class="icon s7-box2"></i><span>All Time Girls</span></a>
+                        <li class="title">Tables</li>
+                        <li class="nav-items">
+                            <div class="am-scroller nano has-scrollbar">
+                                <div class="content nano-content" style="right: -14px;">
+                                    <ul>
+                                        <li>
+                                            <a routerLink="/Tables" routerLinkActive="active">All Time Boy Names</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/Tables" routerLinkActive="active">All Time Girl Names</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/Tables" routerLinkActive="active">Boy Names By Year</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/Tables" routerLinkActive="active">Girl Names By Year</a>
+                                        </li>
+                                    </ul>
+                                </div><div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 660px; transform: translate(0px, 0px);"></div></div>
+                            </div>
                         </li>
                     </ul>
                 </li>

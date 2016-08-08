@@ -1,8 +1,14 @@
-﻿<div class="row">
-    <topnames [count]="5" [sex]="'b'"></topnames>
-    <topnames [count]="5" [sex]="'g'"></topnames>
+﻿<div class="page-head">
+    <h2>Top Baby Names in NSW from the 1950 till date</h2>
 </div>
-<div class="row">
-    <topnames-piechart [sex]="'b'"></topnames-piechart>
-    <topnames-piechart [sex]="'g'"></topnames-piechart>
+<div class="main-content">
+    <div class="row">
+        <topnames [count]="5" [sex]="'b'"></topnames>
+        <topnames [count]="5" [sex]="'g'"></topnames>
+    </div>
+    <div class="row">
+        <topnames-piechart [sex]="'b'"></topnames-piechart>
+        <topnames-piechart [sex]="'g'"></topnames-piechart>
+    </div>
 </div>
+

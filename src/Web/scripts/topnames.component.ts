@@ -19,8 +19,7 @@ export class TopNames implements OnInit{
     private _count: number;
     private _names: INameSummary[];
     private _sub: any;
-
-    errorMessage: string;
+    private _errorMessage: string;
 
     @Input()
     set count(count: number) {
@@ -64,7 +63,7 @@ export class TopNames implements OnInit{
                     this._sex = params["sex"];
                 this._namerankService.getTopNames(this._sex, this.count)
                     .subscribe((names: any) => this.names = names,
-                    error => this.errorMessage = <any>error);
+                    error => this._errorMessage = <any>error);
             });
     }
 }

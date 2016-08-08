@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Web.Model;
 using Web.Repository;
 
 namespace Web.Controllers
@@ -44,6 +45,15 @@ namespace Web.Controllers
             }
 
             return new ObjectResult(statsArray);
+        }
+
+        [HttpGet]
+        public IActionResult GetNamesByRank(int rank, string sex)
+        {
+            var nameStatistics = _repository.GetNamesByRank(rank, sex.ToEnum(), 5)
+                    .Select(n => new PieChartData {Label = n.Name, Data = n.Total});
+
+            return new ObjectResult(nameStatistics);
         }
 
         [HttpGet]

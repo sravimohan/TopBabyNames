@@ -4,4 +4,5 @@
     chartsetup: Function;
     formatBabyNameList: Function;
     getSelectedBabyName: Function;
+    topNamesPieChartInit: Function;
 }

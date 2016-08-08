@@ -1,48 +1,47 @@
-﻿<div class="row">
-    <div class="col-sm-6">
-        <div class="widget widget-fullwidth widget-small">
-            <div class="widget-head">
-                <div class="title">Top Boy Names</div>
-            </div>
-            <table class="table table-fw-widget table-striped">
-                <thead>
+﻿<div class="col-md-4">
+    <div class="widget widget-fullwidth widget-small">
+        <div class="widget-head">
+            <div class="title">All Time Top Boy Names</div>
+        </div>
+        <table class="table table-fw-widget table-striped">
+            <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
                     <th>Total</th>
                 </tr>
-                </thead>
-                <tbody class="no-border-x">
+            </thead>
+            <tbody class="no-border-x">
                 <tr *ngFor="let nameSummary of boyNames; let ndx = index">
                     <td>{{ndx+1}}</td>
                     <td>{{ nameSummary.name }}</td>
                     <td>{{ nameSummary.total }}</td>
                 </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="widget widget-fullwidth widget-small">
-            <div class="widget-head">
-                <div class="title">Top Girl Names</div>
-            </div>
-            <table class="table table-fw-widget table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody class="no-border-x">
-                    <tr *ngFor="let nameSummary of girlNames; let ndx = index">
-                        <td>{{ndx+1}}</td>
-                        <td>{{ nameSummary.name }}</td>
-                        <td>{{ nameSummary.total }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
 </div>
+<div class="col-md-4">
+    <div class="widget widget-fullwidth widget-small">
+        <div class="widget-head">
+            <div class="title">All Time Top Girl Names</div>
+        </div>
+        <table class="table table-fw-widget table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody class="no-border-x">
+                <tr *ngFor="let nameSummary of girlNames; let ndx = index">
+                    <td>{{ndx+1}}</td>
+                    <td>{{ nameSummary.name }}</td>
+                    <td>{{ nameSummary.total }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -69,5 +69,19 @@ namespace Web.Repository
 
             return query.Take(count);
         }
+
+        public IEnumerable<NameSummary> GetNamesByRank(int rank, Sex sex, int count)
+        {
+            var query = NameRanks.Where(n => n.Sex == sex.ToDatabaseString())
+                        .GroupBy(n => new { n.Name, n.Rank })
+                        .Where(n => n.Key.Rank == 1)
+                        .Select(g => new NameSummary()
+                        {
+                            Name = g.Key.Name,
+                            Total = g.Count()
+                        });
+
+            return query.Take(count);
+        }
     }
 }

@@ -39,6 +39,11 @@ export class NameRankService {
             .map((response: Response) => <INameSummary[]>response.json());
     }
 
+    getNamesByRank(rank : number, sex: string): Observable<INameSummary[]> {
+        return this.http.get("api/GetNamesByRank?sex=" + sex + "&rank=" + rank)
+            .map((response: Response) => <INameSummary[]>response.json());
+    }
+
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');

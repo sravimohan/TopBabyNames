@@ -3,12 +3,13 @@
 import { Component } from "@angular/core";
 
 import { TopNames } from "./topnames.component";
+import { TopNamesPieChart } from "./topnames-piechart.component";
 
 
 @Component({
     selector: "dashboard",
     templateUrl: "/templates/dashboard.html",
-    directives: [TopNames]
+    directives: [TopNames, TopNamesPieChart]
 })
 
 export class Dashboard {

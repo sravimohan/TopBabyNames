@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var topnames_component_1 = require("./topnames.component");
+var topnames_piechart_component_1 = require("./topnames-piechart.component");
 var Dashboard = (function () {
     function Dashboard() {
     }
@@ -18,7 +19,7 @@ var Dashboard = (function () {
         core_1.Component({
             selector: "dashboard",
             templateUrl: "/templates/dashboard.html",
-            directives: [topnames_component_1.TopNames]
+            directives: [topnames_component_1.TopNames, topnames_piechart_component_1.TopNamesPieChart]
         }), 
         __metadata('design:paramtypes', [])
     ], Dashboard);

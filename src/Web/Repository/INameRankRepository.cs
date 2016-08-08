@@ -10,5 +10,7 @@ namespace Web.Repository
         IEnumerable<NameRank> GetByYear(int year, Sex sex);
         IEnumerable<NameByYear> GetStatsByName(string name);
         IEnumerable<NameSummary> GetTopNames(int count, Sex sex);
+
+        IEnumerable<NameSummary> GetNamesByRank(int rank, Sex sex, int count);
     }
 }

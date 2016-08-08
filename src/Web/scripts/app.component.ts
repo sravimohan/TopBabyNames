@@ -3,6 +3,10 @@
 import { Component } from "@angular/core";
 import { ROUTER_DIRECTIVES }  from '@angular/router';
 
+import { IAppTheme } from "./IAppTheme";
+
+declare var App: IAppTheme;
+
 @Component({
     selector: "top-baby-names-app",
     templateUrl: "/templates/app.html",
@@ -10,4 +14,7 @@ import { ROUTER_DIRECTIVES }  from '@angular/router';
 })
 
 export class AppComponent {
+    ngOnInit(): void {
+        App.init();
+    }
 }

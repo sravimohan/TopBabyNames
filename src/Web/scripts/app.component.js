@@ -14,6 +14,9 @@ var router_1 = require('@angular/router');
 var AppComponent = (function () {
     function AppComponent() {
     }
+    AppComponent.prototype.ngOnInit = function () {
+        App.init();
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: "top-baby-names-app",

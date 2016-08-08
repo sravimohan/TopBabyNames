@@ -5,4 +5,6 @@
     formatBabyNameList: Function;
     getSelectedBabyName: Function;
     topNamesPieChartInit: Function;
+    formatYearList: Function;
+    getSelectedYear: Function;
 }

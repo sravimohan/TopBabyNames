@@ -50,6 +50,22 @@ var App = (function () {
         return $("#babyNameList").val();
     };
 
+    App.formatYearList = function () {
+        $("#yearSelect")
+            .select2({
+                width: '100%',
+                placeholder: "Enter Year..."
+            });
+
+        $('#yearSelect').on('select2:select', function (evt) {
+            $('#yearSelectButton').click();
+        });
+    };
+
+    App.getSelectedYear = function () {
+        return $("#yearSelect").val();
+    };
+
     App.dataTables = function (datatableName) {
         $(datatableName).dataTable();
     };

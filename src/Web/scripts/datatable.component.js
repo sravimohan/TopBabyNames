@@ -15,13 +15,22 @@ var NameRankService_1 = require("./NameRankService");
 var DataTable = (function () {
     function DataTable(_namerankService) {
         this._namerankService = _namerankService;
+        this.year = 1952;
     }
     DataTable.prototype.ngOnInit = function () {
+        this.loadTable();
+        App.formatYearList();
+    };
+    DataTable.prototype.loadTable = function () {
         var _this = this;
         this._namerankService.getNameRanks(this.year, "B")
             .subscribe(function (nameRanks) { return _this.boyNameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
         this._namerankService.getNameRanks(this.year, "G")
             .subscribe(function (nameRanks) { return _this.girlNameRanks = nameRanks; }, function (error) { return _this.errorMessage = error; });
+    };
+    DataTable.prototype.onyearSearchButtonClicked = function () {
+        this.year = App.getSelectedYear();
+        this.loadTable();
     };
     __decorate([
         core_1.Input(), 

@@ -1,5 +1,8 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
 import { Component, Input, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/observable/fromPromise";
 
 import { INameSummary } from "./INameSummary";
 import { NameRankService } from "./NameRankService";
@@ -15,6 +18,7 @@ export class TopNames implements OnInit{
     private _sex: string;
     private _count: number;
     private _names: INameSummary[];
+    private _sub: any;
 
     errorMessage: string;
 
@@ -48,12 +52,18 @@ export class TopNames implements OnInit{
        this._names = names;
     }
 
-    constructor(private _namerankService: NameRankService){
+    constructor(private _namerankService: NameRankService, private _route: ActivatedRoute, private _router: Router) {
+        this._count = 0;
     }
 
     ngOnInit() : void {
-        this._namerankService.getTopNames(this._sex, this.count)
-            .subscribe((names: any) => this.names = names,
-            error => this.errorMessage = <any>error);
+        this._sub = this._route
+            .params
+            .subscribe(params => {
+                this._sex = params["sex"];
+                this._namerankService.getTopNames(this._sex, this.count)
+                    .subscribe((names: any) => this.names = names,
+                    error => this.errorMessage = <any>error);
+            });
     }
 }

@@ -10,10 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 /// <reference path="../typings/globals/core-js/index.d.ts" />
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+require("rxjs/add/observable/fromPromise");
 var NameRankService_1 = require("./NameRankService");
 var TopNames = (function () {
-    function TopNames(_namerankService) {
+    function TopNames(_namerankService, _route, _router) {
         this._namerankService = _namerankService;
+        this._route = _route;
+        this._router = _router;
+        this._count = 0;
     }
     Object.defineProperty(TopNames.prototype, "count", {
         get: function () {
@@ -54,8 +59,13 @@ var TopNames = (function () {
     });
     TopNames.prototype.ngOnInit = function () {
         var _this = this;
-        this._namerankService.getTopNames(this._sex, this.count)
-            .subscribe(function (names) { return _this.names = names; }, function (error) { return _this.errorMessage = error; });
+        this._sub = this._route
+            .params
+            .subscribe(function (params) {
+            _this._sex = params["sex"];
+            _this._namerankService.getTopNames(_this._sex, _this.count)
+                .subscribe(function (names) { return _this.names = names; }, function (error) { return _this.errorMessage = error; });
+        });
     };
     __decorate([
         core_1.Input(), 
@@ -74,7 +84,7 @@ var TopNames = (function () {
             templateUrl: "/templates/topnames.html",
             providers: [NameRankService_1.NameRankService]
         }), 
-        __metadata('design:paramtypes', [NameRankService_1.NameRankService])
+        __metadata('design:paramtypes', [NameRankService_1.NameRankService, router_1.ActivatedRoute, router_1.Router])
     ], TopNames);
     return TopNames;
 }());

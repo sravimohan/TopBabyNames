@@ -67,7 +67,7 @@ namespace Web.Repository
                             Total = g.Sum(x => x.Total)
                         });
 
-            return query.Take(count);
+            return count > 0 ? query.Take(count) : query;
         }
 
         public IEnumerable<NameSummary> GetNamesByRank(int rank, Sex sex, int count)
@@ -81,7 +81,7 @@ namespace Web.Repository
                             Total = g.Count()
                         });
 
-            return query.Take(count);
+            return count > 0 ? query.Take(count) : query;
         }
     }
 }

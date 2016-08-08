@@ -1,9 +1,5 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
 import { Component, Input, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs/Observable";
-import "rxjs/operator/map";
-import "rxjs/Rx";
 
 import { INameSummary } from "./INameSummary";
 import { NameRankService } from "./NameRankService";
@@ -15,58 +11,48 @@ import { NameRankService } from "./NameRankService";
     providers: [NameRankService]
 })
 
-export class TopNames {
+export class TopNames implements OnInit{
     private _sex: string;
     private _count: number;
     private _names: INameSummary[];
-    private _sub: any;
 
     errorMessage: string;
 
     @Input()
     set count(count: number) {
         this._count = count;
-        this.loadData();
-    }
-
-    @Input()
-    set sex(sex: string) {
-        if (sex == null || sex === this._sex)
-            return;
-
-        this._sex = sex;
-        this.loadData();
-    }
-
-    get sexDescription(): string {
-        return this._sex === "g" ? "Girl" : "Boy";
     }
 
     get count(): number {
         return this._count;
     }
 
+    @Input()
+    set sex(sex: string) {
+        this._sex = sex;
+    }
+
+    get sex(): string {
+        return this._sex;
+    }
+
+    get sexDescription(): string {
+        return this._sex === "g" ? "Girl" : "Boy";
+    }
+
     get names(): INameSummary[] {
         return this._names;
     }
 
-    @Input()
     set names(names: INameSummary[]) {
-        this.loadData();
-        this._names = names;
+       this._names = names;
     }
 
-    constructor(private _route: ActivatedRoute, private _namerankService: NameRankService){
+    constructor(private _namerankService: NameRankService){
     }
 
     ngOnInit() : void {
-        this._sub = this._route.params.subscribe((params: any) => {
-            this.sex = params["sex"];
-        });
-    }
-
-    loadData(): void {
-        this._namerankService.getTopNames(this.sex, this.count)
+        this._namerankService.getTopNames(this._sex, this.count)
             .subscribe((names: any) => this.names = names,
             error => this.errorMessage = <any>error);
     }
